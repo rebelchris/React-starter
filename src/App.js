@@ -1,25 +1,54 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+const people = [
+  {
+    firstName: 'Chris',
+    lastName: 'Bongers'
+  },
+  {
+    firstName: 'Hub',
+    lastName: 'Bongers'
+  },
+  {
+    firstName: 'Sanne',
+    lastName: 'Bongers'
+  }
+];
+
+const Avatar = ({ person }) => {
+  const { firstName, lastName } = person;
+  console.log(firstName);
+  let name = firstName.charAt(0).toUpperCase() + lastName.charAt(0).toUpperCase();
+
+  return (
+    <div className={'avatar'}>
+      {name}
+    </div>
+  )
+}
+
+const TableRow = ({ row }) => (
+  <tr>
+    <td><Avatar person={row} /></td>
+    <td>{row.firstName}</td>
+    <td>{row.lastName}</td>
+  </tr>
+)
+
+const Table = ({ data }) => (
+  <table className={'table'} cellSpacing={0} cellPadding={0}>
+    <tbody>
+      {data.map((row, i) => {
+        return <TableRow row={row} key={i} />
+      })}
+    </tbody>
+  </table>
+)
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Table data={people} />
   );
 }
 
