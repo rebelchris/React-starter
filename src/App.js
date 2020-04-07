@@ -18,7 +18,6 @@ const people = [
 
 const Avatar = ({ person }) => {
   const { firstName, lastName } = person;
-  console.log(firstName);
   let name = firstName.charAt(0).toUpperCase() + lastName.charAt(0).toUpperCase();
 
   return (
